@@ -1,4 +1,6 @@
-package com.example.hvaquest
+package com.example.hvaquest.model
+
+import com.example.hvaquest.R
 
 
 data class Question(
