@@ -9,7 +9,11 @@
         android:id="@+id/questionFragment"
         android:name="com.example.hvaquest.ui.fragments.QuestionFragment"
         android:label="fragment_question"
-        tools:layout="@layout/fragment_question" />
+        tools:layout="@layout/fragment_question" >
+        <action
+            android:id="@+id/action_questionFragment_to_locationClueFragment"
+            app:destination="@id/locationClueFragment" />
+    </fragment>
     <fragment
         android:id="@+id/locationClueFragment"
         android:name="com.example.hvaquest.ui.fragments.LocationClueFragment"
@@ -20,4 +24,9 @@
         android:name="com.example.hvaquest.ui.fragments.QuestCompleted"
         android:label="fragment_quest_completed"
         tools:layout="@layout/fragment_quest_completed" />
+    <activity
+        android:id="@+id/quest"
+        android:name="com.example.hvaquest.ui.Quest"
+        android:label="activity_quest"
+        tools:layout="@layout/activity_quest" />
 </navigation>
