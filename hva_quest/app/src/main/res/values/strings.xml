@@ -8,7 +8,7 @@
 
     <!-- Question -->
     <string name="question_btn_text">Confirm</string>
-    <string name="question_index">%f/%f</string>
+    <string name="question_index">%f / %f</string>
     <string name="wrong_answer">Incorrect</string>
 
     <!--  Clue  -->
@@ -18,4 +18,5 @@
     <!-- Completed -->
     <string name="completed_txt">Congratulations, you finished the quest! \nHere is your price</string>
     <string name="completed_btn_finish">Finish</string>
+    <string name="completed_cake_des">This is a cake</string>
 </resources>

@@ -5,17 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.lifecycle.ViewModelProviders
 import com.example.hvaquest.R
+import com.example.hvaquest.ui.Quest
 import com.example.hvaquest.ui.viewmodel.QuestViewModel
 import kotlinx.android.synthetic.main.activity_quest.*
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [QuestCompleted.newInstance] factory method to
- * create an instance of this fragment.
- */
 class QuestCompleted : Fragment() {
     private lateinit var questViewModel: QuestViewModel
 
@@ -24,7 +20,7 @@ class QuestCompleted : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        questViewModel = ViewModelProviders.of(this).get(QuestViewModel::class.java)
+        questViewModel = ViewModelProviders.of(activity as Quest).get(QuestViewModel::class.java)
         return inflater.inflate(R.layout.fragment_quest_completed, container, false)
     }
 
@@ -34,7 +30,8 @@ class QuestCompleted : Fragment() {
     }
 
     private fun initView() {
-        btnQuest.text = getString(R.string.completed_btn_finish)
+        val buttonQuest = activity?.findViewById<Button>(R.id.btnQuest)
+        buttonQuest?.text = getString(R.string.completed_btn_finish)
+        buttonQuest?.setOnClickListener { activity?.finish() }
     }
-
 }

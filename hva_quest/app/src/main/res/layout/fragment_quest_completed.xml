@@ -33,6 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCompleted"
-        tools:src="@drawable/ic_cake_red_264dp" />
+        tools:src="@drawable/ic_cake_red_264dp"
+        android:contentDescription="@string/completed_cake_des" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

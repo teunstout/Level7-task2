@@ -5,17 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.hvaquest.R
+import com.example.hvaquest.ui.Quest
 import com.example.hvaquest.ui.viewmodel.QuestViewModel
 import kotlinx.android.synthetic.main.activity_quest.*
+import kotlinx.android.synthetic.main.fragment_location_clue.*
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LocationClueFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LocationClueFragment : Fragment() {
     private lateinit var questViewModel: QuestViewModel
 
@@ -23,17 +22,23 @@ class LocationClueFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        questViewModel = ViewModelProviders.of(this).get(QuestViewModel::class.java)
+        questViewModel = ViewModelProviders.of(activity as Quest).get(QuestViewModel::class.java)
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_location_clue, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         initView()
+        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun initView() {
-        btnQuest.text = getString(R.string.clue_btn_next)
+        imgCompleted.setImageResource(questViewModel.getQuestion().clue)
+        val buttonQuest = activity?.findViewById<Button>(R.id.btnQuest)
+        buttonQuest?.text = getString(R.string.clue_btn_next)
+        buttonQuest?.setOnClickListener {
+            findNavController().navigate(R.id.questionFragment)
+        }
     }
 }
