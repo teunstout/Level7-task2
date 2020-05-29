@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/txtCompleted"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -23,17 +23,18 @@
 
     <ImageView
         android:id="@+id/imgCompleted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/completed_cake_des"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCompleted"
-        tools:src="@drawable/ic_cake_red_264dp"
-        android:contentDescription="@string/completed_cake_des" />
+        app:srcCompat="@drawable/ic_cake_red_264dp"
+        tools:src="@drawable/ic_cake_red_264dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

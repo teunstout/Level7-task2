@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.hvaquest.R
 import com.example.hvaquest.ui.Quest
 import com.example.hvaquest.ui.viewmodel.QuestViewModel
-import kotlinx.android.synthetic.main.activity_quest.*
 import kotlinx.android.synthetic.main.fragment_location_clue.*
 
 class LocationClueFragment : Fragment() {
@@ -20,9 +18,8 @@ class LocationClueFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        questViewModel = ViewModelProviders.of(activity as Quest).get(QuestViewModel::class.java)
+        savedInstanceState: Bundle?): View? {
+        questViewModel = ViewModelProvider(activity as Quest).get(QuestViewModel::class.java)
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_location_clue, container, false)

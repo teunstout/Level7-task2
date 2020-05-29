@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.hvaquest.R
 import com.example.hvaquest.ui.Quest
@@ -20,9 +20,8 @@ class QuestionFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        questViewModel = ViewModelProviders.of(activity as Quest).get(QuestViewModel::class.java)
+        savedInstanceState: Bundle?): View? {
+        questViewModel = ViewModelProvider(activity as Quest).get(QuestViewModel::class.java)
 
         return inflater.inflate(R.layout.fragment_question, container, false)
     }

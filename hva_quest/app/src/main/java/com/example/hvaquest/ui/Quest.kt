@@ -3,7 +3,7 @@ package com.example.hvaquest.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -17,8 +17,7 @@ class Quest : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quest)
-
-        questViewModel = ViewModelProviders.of(this).get(QuestViewModel::class.java)
+        questViewModel = ViewModelProvider(this).get(QuestViewModel::class.java)
         initNavigation()
     }
 
