@@ -2,7 +2,10 @@ package com.example.hvaquest.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,12 +15,12 @@ import com.example.hvaquest.R
 import com.example.hvaquest.ui.viewmodel.QuestViewModel
 
 class Quest : AppCompatActivity() {
-    private lateinit var questViewModel: QuestViewModel
+    private val questViewModel: QuestViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quest)
-        questViewModel = ViewModelProvider(this).get(QuestViewModel::class.java)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         initNavigation()
     }
 
@@ -34,9 +37,20 @@ class Quest : AppCompatActivity() {
         val navController = findNavController(R.id.navHostFragment)
         return when (item?.itemId) {
             android.R.id.home -> {
-                questViewModel.previousQuestion()
-                navController.navigateUp()
-                return true
+                if (questViewModel.getIndex() == 0) {
+                    AlertDialog.Builder(this)
+                        .setTitle("Do you want to quit?")
+                        .setMessage("Do you want to quit and go back to the home screen?")
+                        .setPositiveButton("Yes") { dialog, which ->
+                            finish()
+                        }
+                        .setNegativeButton("No", null)
+                        .show()
+                } else {
+                    questViewModel.previousQuestion()
+                    navController.navigateUp()
+                }
+                return false // true
             }
             else -> super.onOptionsItemSelected(item)
         }

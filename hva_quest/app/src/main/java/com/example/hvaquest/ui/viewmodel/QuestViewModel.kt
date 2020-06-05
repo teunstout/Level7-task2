@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.hvaquest.model.Question
 import com.example.hvaquest.repository.QuestRepository
 
-class QuestViewModel: ViewModel() {
+class QuestViewModel : ViewModel() {
     private val questRepository = QuestRepository()
     private val questions = questRepository.getHvaQuest() as ArrayList<Question>
     private var index = 0
@@ -19,12 +19,14 @@ class QuestViewModel: ViewModel() {
     fun getQuestion() = questions[index]
 
     // Increment question so next time you call getQuestion it is the next question
-    fun nextQuestion() =  ++index
+    fun nextQuestion() = ++index
 
     // decrement question so next time you call getQuestion it is the previous question
-    fun previousQuestion() =  --index
+    fun previousQuestion() = if (index != 0) --index else index
 
     // Get the size of the question list
     fun getQuestionSize() = questions.size
+
+    fun getIndex() = index
 
 }
